@@ -40,23 +40,7 @@ namespace OnlineStore.Domain.Test
 
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ApplicationException))]
-        public void LoginWithBlankUserNameThrowsException()
-        {
-            // arrange
-            var mockEmployeeRepository = new Mock<IEmployeeRepository>();
-            mockEmployeeRepository.Setup(
-                r => r.Find(It.IsAny<ISpecification<Employee>>()))
-                .Returns(new List<Employee>());
-
-            IEmployeeRepository repository = mockEmployeeRepository.Object;
-            var sut = new LoginManager(repository);
-
-            // act
-            var result = sut.Login(string.Empty, string.Empty);
-            
-        }
+      
 
         [TestMethod]
         public void LoginBlankUserNameShouldNotCallRepositoryFind()
